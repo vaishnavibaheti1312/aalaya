@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Aalaya — Curated Luxury Residences</title>
+  <meta name="description" id="meta-desc" content="Curated luxury residences across Pune and Mumbai."/>
+  <meta name="keywords" id="meta-keywords" content=""/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://vaishnavibaheti1312.github.io/aalaya/"/>
+
+  <!-- Icons, theme & PWA manifest -->
+  <link rel="icon" href="favicon.svg" type="image/svg+xml"/>
+  <link rel="manifest" href="manifest.json"/>
+  <meta name="theme-color" content="#1C1714"/>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://vaishnavibaheti1312.github.io/aalaya/"/>
+  <meta property="og:title" id="og-title" content="Aalaya — Curated Luxury Residences"/>
+  <meta property="og:description" id="og-desc" content=""/>
+  <meta property="og:image" content="assets/img/site/hero-banner.png"/>
+
+  <!-- Fonts (same family set as VB Studio for brand continuity) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:wght@400;500;600;700&family=Italianno&family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@200;300;400;500&display=swap"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+  <!-- Leaflet (interactive dark map) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/base.css"/>
+  <link rel="stylesheet" href="css/walkthrough.css"/>
+  <link rel="stylesheet" href="css/site.css"/>
+
+  <script>document.documentElement.classList.remove('no-js');</script>
+</head>
+
+<body class="no-js">
+
+  <!-- ========================= HEADER ========================= -->
+  <header class="site-header" id="site-header">
+    <a href="#top" class="brand-mark" id="brand-mark">AALAYA<small id="brand-tagline"></small></a>
+    <nav class="site-nav">
+      <a href="#residence">The Home</a>
+      <a href="#amenities">Amenities</a>
+      <a href="#configs">Configurations</a>
+      <a href="#location">Location</a>
+      <a href="#enquiry" class="gold">Enquire</a>
+    </nav>
+    <div class="header-cta">
+      <a class="header-phone" id="header-phone" href="tel:"><i class="fa fa-phone"></i><span></span></a>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#residence">The Home</a>
+    <a href="#amenities">Amenities</a>
+    <a href="#configs">Configurations</a>
+    <a href="#location">Location</a>
+    <a href="#enquiry" class="gold">Enquire Now</a>
+  </div>
+
+  <span id="top"></span>
+
+  <!-- ========================= LANDING (static hero image) ========================= -->
+  <section class="hero" id="hero">
+    <img class="hero__img" id="hero-img" alt="" fetchpriority="high"/>
+    <div class="hero__grade"></div>
+    <div class="hero__content">
+      <div class="inner">
+        <p class="hero__kicker" id="hero-kicker"></p>
+        <h1 class="hero__title" id="hero-title"></h1>
+        <p class="hero__subtitle" id="hero-subtitle"></p>
+        <div class="hero__actions">
+          <a href="#enquiry" class="btn btn--gold" id="hero-cta1"></a>
+        </div>
+      </div>
+    </div>
+    <div class="hero__price">
+      <div class="label" id="hero-price-label"></div>
+      <div class="value" id="hero-price"></div>
+    </div>
+    <a href="#reel" class="hero__cue" id="hero-cue" aria-label="Scroll to explore">Scroll<span class="line"></span></a>
+  </section>
+
+  <!-- ================= SCROLL REEL — landing photos, one full screen at a time =========
+       Panels are built by js/render.js from PROJECT.reel.photos; each image
+       reveals with a cinematic animation as it scrolls into view (js/reel.js). -->
+  <section class="reel" id="reel"><!-- panels injected --></section>
+
+  <!-- ========================= OVERVIEW ========================= -->
+  <section class="section overview" id="residence" data-reveal>
+    <div class="wrap">
+      <span class="eyebrow" id="ov-eyebrow"></span>
+      <h2 class="section-title" id="ov-heading" style="margin-top:14px;"></h2>
+      <div class="overview__body" id="ov-body"></div>
+      <div class="stats" id="ov-stats"></div>
+    </div>
+  </section>
+
+  <!-- ========================= AMENITIES ========================= -->
+  <section class="section amenities" id="amenities" data-reveal>
+    <div class="wrap">
+      <div class="head head--center">
+        <span class="eyebrow">The lifestyle</span>
+        <h2 class="section-title" id="am-heading" style="margin-top:14px;"></h2>
+        <p class="section-sub" id="am-intro"></p>
+      </div>
+      <div class="amenities__grid" id="amenities-grid"></div>
+    </div>
+  </section>
+
+  <!-- ========================= CONFIGURATIONS ========================= -->
+  <section class="section configs" id="configs" data-reveal>
+    <div class="wrap">
+      <div class="head head--center">
+        <span class="eyebrow">Floor plans &amp; pricing</span>
+        <h2 class="section-title" id="cfg-heading" style="margin-top:14px;"></h2>
+      </div>
+      <div class="config-grid" id="config-grid"></div>
+    </div>
+  </section>
+
+  <!-- ========================= LOCATION ========================= -->
+  <section class="section location" id="location" data-reveal>
+    <div class="wrap location__inner">
+      <div>
+        <div class="head">
+          <span class="eyebrow">The address</span>
+          <h2 class="section-title" id="loc-heading" style="margin-top:14px;"></h2>
+          <p class="section-sub" id="loc-body"></p>
+        </div>
+        <ul class="loc-list" id="loc-list"></ul>
+      </div>
+      <div class="location__map" id="loc-map"></div>
+    </div>
+  </section>
+
+  <!-- ========================= WHY US ========================= -->
+  <section class="section whyus" id="whyus" data-reveal>
+    <div class="wrap">
+      <div class="head head--center">
+        <span class="eyebrow">Your advantage</span>
+        <h2 class="section-title" id="why-heading" style="margin-top:14px;"></h2>
+        <p class="section-sub" id="why-body"></p>
+      </div>
+      <div class="whyus__grid" id="whyus-grid"></div>
+    </div>
+  </section>
+
+  <!-- ========================= ENQUIRY ========================= -->
+  <section class="section enquiry" id="enquiry" data-reveal>
+    <div class="wrap enquiry__inner">
+      <div class="enquiry__aside">
+        <div class="head">
+          <span class="eyebrow">Speak to an advisor</span>
+          <h2 class="section-title" id="enq-heading" style="margin-top:14px;"></h2>
+          <p class="section-sub" id="enq-sub"></p>
+        </div>
+        <div class="price-anchor">
+          <span class="label">Priced from</span>
+          <span class="value" id="enq-price"></span>
+          <span class="note" id="enq-price-note"></span>
+        </div>
+      </div>
+
+      <div>
+        <form class="form" id="enquiry-form" novalidate>
+          <div class="form__row">
+            <div class="field">
+              <label for="f-name">Name</label>
+              <input id="f-name" name="name" type="text" autocomplete="name" placeholder="Your full name"/>
+              <span class="msg" id="f-name-msg"></span>
+            </div>
+            <div class="field">
+              <label for="f-phone">Phone</label>
+              <input id="f-phone" name="mobile" type="tel" autocomplete="tel" placeholder="Mobile number"/>
+              <span class="msg" id="f-phone-msg"></span>
+            </div>
+          </div>
+          <div class="form__row">
+            <div class="field">
+              <label for="f-email">Email</label>
+              <input id="f-email" name="email" type="email" autocomplete="email" placeholder="Email address"/>
+              <span class="msg" id="f-email-msg"></span>
+            </div>
+            <div class="field">
+              <label for="f-config">Configuration</label>
+              <select id="f-config" name="config"></select>
+              <span class="msg" id="f-config-msg"></span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-msg">Message <span style="text-transform:none;letter-spacing:0;color:#bbb;">(optional)</span></label>
+            <textarea id="f-msg" name="message" rows="2" placeholder="Anything specific you'd like to know?"></textarea>
+          </div>
+          <button type="submit" class="btn btn--gold form__submit" id="f-submit">Get the cost sheet &amp; floor plans</button>
+          <p class="form__reassure"><i class="fa fa-lock"></i><span id="f-reassure"></span></p>
+        </form>
+        <div class="form__success" id="form-success">
+          <i class="fa fa-check-circle"></i>
+          <p id="success-text"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= FOOTER ========================= -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="brand-mark" id="footer-brand">AALAYA</span>
+        <p id="footer-tagline"></p>
+        <div class="footer-social" id="footer-social"></div>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="#residence">The Home</a>
+        <a href="#amenities">Amenities</a>
+        <a href="#configs">Configurations</a>
+        <a href="#location">Location</a>
+        <a href="#enquiry">Enquire</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a id="footer-phone" href="tel:"></a>
+        <a id="footer-email" href="mailto:"></a>
+        <p id="footer-location"></p>
+      </div>
+    </div>
+    <p class="footer-disclaimer" id="footer-disclaimer"></p>
+    <div class="footer-bottom">
+      <span id="footer-copy"></span>
+      <span id="footer-rera"></span>
+    </div>
+    <div class="footer-credits">Map data © OpenStreetMap contributors, © CARTO</div>
+  </footer>
+
+  <!-- ========================= STICKY CTA + WHATSAPP ========================= -->
+  <div class="sticky-cta" id="sticky-cta">
+    <div class="sticky-cta__info">
+      <span class="p" id="sticky-p"></span>
+      <span class="s" id="sticky-s"></span>
+    </div>
+    <div class="sticky-cta__actions">
+      <a class="btn btn--outline-light" id="sticky-call" href="tel:"><i class="fa fa-phone"></i> Call</a>
+      <a class="btn btn--gold" href="#enquiry">Enquire Now</a>
+    </div>
+  </div>
+
+  <a class="wa-float" id="wa-float" href="#" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa fa-whatsapp"></i></a>
+
+  <!-- ========================= SCRIPTS ========================= -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- Data first, then render, then behaviours, reel animation, and map -->
+  <script src="data/project.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/reel.js"></script>
+  <script src="js/map.js"></script>
+</body>
+</html>
