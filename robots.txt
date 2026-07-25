@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vaishnavibaheti1312.github.io/aalaya/sitemap.xml
